@@ -22,6 +22,7 @@ public class FenConnexion extends javax.swing.JFrame {
         complementGUI();
     }
 
+    //Permet de customiser la FenConnexion en ligne de code
     public void complementGUI() {
         setTitle("Conseil de Section");
     }
@@ -75,6 +76,16 @@ public class FenConnexion extends javax.swing.JFrame {
         jBtn_Valider.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/connection/valider.png"))); // NOI18N
         jBtn_Valider.setText("Valider");
         jBtn_Valider.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        jBtn_Valider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtn_ValiderActionPerformed(evt);
+            }
+        });
+        jBtn_Valider.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jBtn_ValiderKeyPressed(evt);
+            }
+        });
         getContentPane().add(jBtn_Valider, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, -1, -1));
 
         jBtn_Quitter.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
@@ -83,6 +94,11 @@ public class FenConnexion extends javax.swing.JFrame {
         jBtn_Quitter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtn_QuitterActionPerformed(evt);
+            }
+        });
+        jBtn_Quitter.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jBtn_QuitterKeyPressed(evt);
             }
         });
         getContentPane().add(jBtn_Quitter, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, -1, -1));
@@ -94,10 +110,38 @@ public class FenConnexion extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+        //Bouton Quitter valide la sélection pour fermer l'application
     private void jBtn_QuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtn_QuitterActionPerformed
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_jBtn_QuitterActionPerformed
+
+    //Bouton Entrée sur Quitter valide la sélection pour fermer l'application
+    private void jBtn_QuitterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtn_QuitterKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == 10) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_jBtn_QuitterKeyPressed
+
+    //Bouton Entrée sur Valider valide la sélection pour accéder à la FenMenuPrincipal
+    private void jBtn_ValiderKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtn_ValiderKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == 10) {
+            FenMenuPrincipal laFenetre = new FenMenuPrincipal() ;
+            laFenetre.setVisible(true);
+            dispose();
+        }
+    }//GEN-LAST:event_jBtn_ValiderKeyPressed
+    
+//Bouton Valider valide la sélection pour accéder à la FenMenuPrincipal
+    private void jBtn_ValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtn_ValiderActionPerformed
+        // TODO add your handling code here:
+        FenMenuPrincipal laFenetre = new FenMenuPrincipal();
+        laFenetre.setVisible(true);
+        dispose();
+        
+    }//GEN-LAST:event_jBtn_ValiderActionPerformed
 
     /**
      * @param args the command line arguments
